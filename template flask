@@ -1,0 +1,27 @@
+#run command
+#gcloud app deploy --project=powerful-bounty-401013 --version 1
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    response = "<html><body>hello out there</body></html>"
+    return response
+
+@app.route('/test', methods=['GET'])
+def testMethod():
+    response = "<html><body>"
+    response += "test is working"
+    response += "</body></html>"
+
+    return response
+
+@app.route('/test', methods= ['POST'])
+def testMethodPOST():
+    response = "<html><body>"
+    response += "post is working"
+    response += "</body></html>"
+
+    return response
