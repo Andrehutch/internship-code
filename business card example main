@@ -1,0 +1,20 @@
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def business_card():
+    # Define your business card information
+    card_info = {
+        'name': 'John Doe',
+        'title': 'Software Developer',
+        'company': 'Tech Corp',
+        'email': 'john.doe@example.com',
+        'phone': '+1 (123) 456-7890',
+    }
+
+    # Render a template to display the business card information
+    return business_card ('business_card.html', card_info=card_info)
+
+if __name__ == '__main__':
+    app.run(debug=True)
