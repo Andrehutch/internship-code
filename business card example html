@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Business Card</title>
+</head>
+<body>
+    <h1>{{ card_info['name'] }}</h1>
+    <p>{{ card_info['title'] }}</p>
+    <p>{{ card_info['company'] }}</p>
+    <p>Email: {{ card_info['email'] }}</p>
+    <p>Phone: {{ card_info['phone'] }}</p>
+</body>
+</html>
