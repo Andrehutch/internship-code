@@ -1,10 +1,37 @@
-from flask import Flask
+#run command
+#gcloud app deploy --project=powerful-bounty-401013 --version 1
+
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
-def business_card():
+def index():
+    cardObject = testbusinessCard()
+    return render_template('business_card.html', card_info=cardObject)
+    #return jsonify(response )
+
+@app.route('/test', methods=['GET'])
+def testbusinessCard():
     # Define your business card information
+    card_info = {
+        'name': 'John Doe',
+        'title': 'Software Developer',
+        'company': 'Tech Corp',
+        'email': 'john.doe@example.com',
+        'phone': '+1 (123) 456-7890',
+    }
+    #card_info2 = {}
+    #card_info2["name"]="Chris Raasch"
+    #card_info2["compnay"]="CSI"
+    #card_info3 = json.loads("'name': 'John Doe','title': 'Software Developer','company': 'Tech Corp','email': 'john.doe@example.com','phone': '+1 (123) 456-7890',")
+
+    # Render a template to display the business card information
+    return card_info
+
+@app.route('/test', methods=["POST"])
+def testbusinessCardPOST():
+# Define your business card information
     card_info = {
         'name': 'John Doe',
         'title': 'Software Developer',
@@ -14,7 +41,6 @@ def business_card():
     }
 
     # Render a template to display the business card information
-    return business_card ('business_card.html', card_info=card_info)
-
+    return card_info('business_card.html', card_info=card_info)
 if __name__ == '__main__':
     app.run(debug=True)
