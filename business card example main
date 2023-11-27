@@ -1,6 +1,9 @@
 #run command
 #gcloud app deploy --project=powerful-bounty-401013 --version 1
 
+#run command
+#gcloud app deploy --project=powerful-bounty-401013 --version 1
+
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -15,10 +18,10 @@ def index():
 def testbusinessCard():
     # Define your business card information
     card_info = {
-        'name': 'John Doe',
-        'title': 'Software Developer',
-        'company': 'Tech Corp',
-        'email': 'john.doe@example.com',
+        'name': 'Lebron James',
+        'title': 'Professional Basketball Player',
+        'company': 'LBJ',
+        'email': 'Lebron.james@hotmail.com',
         'phone': '+1 (123) 456-7890',
     }
     #card_info2 = {}
@@ -33,10 +36,10 @@ def testbusinessCard():
 def testbusinessCardPOST():
 # Define your business card information
     card_info = {
-        'name': 'John Doe',
-        'title': 'Software Developer',
-        'company': 'Tech Corp',
-        'email': 'john.doe@example.com',
+        'name': 'Lebron James',
+        'title': 'Professional Basketball Player',
+        'company': 'LBJ',
+        'email': 'Lebron.james@hotmail.com',
         'phone': '+1 (123) 456-7890',
     }
 
