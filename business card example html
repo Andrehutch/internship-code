@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Business Card</title>
+    <title>Business Card </title>
 </head>
-<body backgroud="dark">
+<body bgcolor="gray">
     <h1>{{ card_info['name'] }}</h1>
     <p>{{ card_info['title'] }}</p>
     <p>{{ card_info['company'] }}</p>
