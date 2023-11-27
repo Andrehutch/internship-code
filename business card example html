@@ -3,11 +3,24 @@
 <head>
     <title>Business Card</title>
 </head>
-<body>
+<body backgroud="dark">
     <h1>{{ card_info['name'] }}</h1>
     <p>{{ card_info['title'] }}</p>
     <p>{{ card_info['company'] }}</p>
     <p>Email: {{ card_info['email'] }}</p>
     <p>Phone: {{ card_info['phone'] }}</p>
+        <div class="container">
+            <div class="hero">
+                <div style="text-align:center;">
+                    <picture>
+                        <img src="https://cloudfront-us-east-1.images.arcpublishing.com/advancelocal/YISHMCH7GZHN7IQPA3PVSV3CDU.jpg" alt="LeBron-Lakers-Jersey" width="427" height="231">
+                    </picture>
+                </div>
+    
+                <div class="message">
+                    <h1>{{message}}</h1>
+                    <h2>Congratulations, you successfully deployed a buisness card</h2>
+                </div>
+            </div>
 </body>
 </html>
