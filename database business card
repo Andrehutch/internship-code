@@ -1,0 +1,52 @@
+#run command
+#gcloud app deploy --project=powerful-bounty-401013 --version 1
+
+#run command
+#gcloud app deploy --project=powerful-bounty-401013 --version 1
+
+from google.cloud import ndb
+from flask import Flask, render_template
+
+# Initialize the client
+Business = ndb.Client()
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    cardObject = Business()
+    return render_template('business_card.html', Person=cardObject)
+
+@app.route('/Person', methods=['GET'])
+# Define a model
+class Person(ndb.Model):
+    name = ndb.StringProperty()
+    age = ndb.IntegerProperty()
+    email = ndb.StringProperty()
+    number = ndb.IntegerProperty()
+
+# Function to add a person
+def add_person(name, age, email, number):
+    with Business.context():
+        person = Person(name=name, age=age, email=email, number=number)
+        person.put()
+
+# Function to get all persons
+def get_all_persons():
+    with Business.context():
+        return Person.query().fetch()
+    
+@app.route('/Person', methods=["POST"])
+def PersonBusinessPOST():
+# Adding a person
+    add_person("Lebron", 37, "LBJ@example.com", 4535556572)
+    add_person("Bronny", 20, "bronnyJ@example.com", 4536575877)
+
+    # Retrieving all persons
+    persons = get_all_persons()
+    for person in persons:
+        print(f"Name: {person.name}, Age: {person.age}, Email: {person.email}, Number: {person.number}")
+    return get_all_persons('business_card.html', Person=Business)
+# Example usage
+if __name__ == "__main__":
+    app.run(debug=True)
