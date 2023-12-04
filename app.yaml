@@ -1,0 +1,9 @@
+runtime: python312
+
+handlers:
+- url: /static
+  static_files: static/\1
+  upload: static/
+
+- url: /.*
+  script: main.app
