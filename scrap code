@@ -1,0 +1,55 @@
+app = Flask(__name__, template_folder='templates')
+
+scorecard = {
+    "player_name_1": "",
+    "holes": {
+        1: {"par": 4, "score": None},
+        2: {"par": 3, "score": None},
+        3: {"par": 4, "score": None},
+        4: {"par": 5, "score": None},
+        5: {"par": 3, "score": None},
+        6: {"par": 4, "score": None},
+        7: {"par": 3, "score": None},
+        8: {"par": 2, "score": None},
+        9: {"par": 3, "score": None},
+
+
+        # Add more holes...
+    }
+}
+
+@app.route('/', methods=['GET'])
+def index():
+    scorecard = {
+    "player_name": "John",
+    "holes": {
+        1: {"par": 4, "score": None},
+        2: {"par": 3, "score": None},
+        3: {"par": 4, "score": None},
+        4: {"par": 5, "score": None},
+        5: {"par": 3, "score": None},
+        6: {"par": 4, "score": None},
+        7: {"par": 3, "score": None},
+        8: {"par": 2, "score": None},
+        9: {"par": 3, "score": None},
+        # Add more holes...
+    }
+}
+
+    return render_template('index.html', scorecard=scorecard)
+
+@app.route('/submit_score', methods=['POST'])
+def submit_score():
+    if request.method == 'POST':
+        
+        hole_number = int(request.form['hole_number'])
+        score = int(request.form['score'])
+        # Update score for the specified hole
+        scorecard['holes'][hole_number]['score'] = score
+        # Calculate total score, handicap, etc.
+        total_score = sum(score for hole in scorecard['holes'].values() if hole['score'])
+        # Update other calculations as needed...
+        return render_template('index.html', scorecard=scorecard, total_score=total_score)
+
+if __name__ == '__main__':
+    app.run(debug=True)
